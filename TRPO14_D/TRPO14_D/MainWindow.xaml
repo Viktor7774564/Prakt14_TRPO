@@ -1,0 +1,76 @@
+﻿<Window x:Class="TRPO14_D.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:TRPO14_D"
+      mc:Ignorable="d"
+      Title="CarsApp" Height="542.921" Width="310.294">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="483*"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" DataContext="{Binding SelectedCar}" Grid.RowSpan="2">
+            <TextBlock Text="Выбранный элемент" Margin="0,0,-233,0" />
+            <TextBlock Text="Модель" />
+            <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Категория" />
+            <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Цена, руб." />
+            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Характеристики"/>
+            <TextBox Text="{Binding Specific, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <StackPanel>
+                <CheckBox Content="Скидка для категории" x:Name="SaleCategory"/>
+                <ComboBox Text="Категория" x:Name="cbx1" />
+                <Label Content="Скидка в %" FontSize="10"/>
+                <TextBox Text="{Binding Discount, UpdateSourceTrigger=PropertyChanged}" x:Name="procent"  TextChanged="SaleCategory_Changed" MaxLength="2" PreviewTextInput="procent_PreviewTextInput"/>
+            </StackPanel>
+
+            <Button Click="Add_Click">+</Button>
+            <Button Click="Delete_Click" >-</Button>
+
+        </StackPanel>
+
+
+        <ListBox Grid.Column="0" ItemsSource="{Binding Cars}"
+      SelectedItem="{Binding SelectedCar}" Margin="0,271,0,0" RenderTransformOrigin="0.503,0.047">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18">
+                             <Run Text="{Binding Path=Model}"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="Категория:"/>
+                            <Run Text="{Binding Path=Category}"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="Цена:"/>
+                            <Run Text="{Binding Price}" TextDecorations="{Binding HasDiscount, Converter={StaticResource StrikelineConverter}}"/>
+                            <Run Text="руб."/>
+                        </TextBlock>
+                        <TextBlock Visibility="{Binding HasDiscount, Converter={StaticResource VisibilityConverter}}" Foreground="Red" FontSize="12" FontWeight="Bold">
+                           <Run Text="СКИДКА! НОВАЯ ЦЕНА:" />
+                           <Run Text="{Binding FinalPrice, Mode=OneWay}" />
+                           <Run Text="рублей." />
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="Характеристики:"/>
+                            <Run Text="{Binding Path=Specific}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Column="0" Grid.Row="1" Content="Сохранить в JSON" Click="Save_Json"/>
+    </Grid>
+</Window>

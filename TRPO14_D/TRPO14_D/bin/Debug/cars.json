@@ -1,0 +1,38 @@
+[
+  {
+    "Model": "ВАЗ-2105",
+    "Category": "srtgeg",
+    "Price": 56000,
+    "HasDiscount": true,
+    "FinalPrice": 44240.00,
+    "Specific": "Rewfwef",
+    "Discount": 21
+  },
+  {
+    "Model": "LADA Priora",
+    "Category": "ergegeg",
+    "Price": 560000,
+    "HasDiscount": true,
+    "FinalPrice": 476000.00,
+    "Specific": "ferfefwe",
+    "Discount": 15
+  },
+  {
+    "Model": "КамАЗ",
+    "Category": "eagegeag",
+    "Price": 5600000,
+    "HasDiscount": true,
+    "FinalPrice": 2800000.0,
+    "Specific": "wefewfwf",
+    "Discount": 50
+  },
+  {
+    "Model": "LADA Priora",
+    "Category": "ergegeg",
+    "Price": 560000,
+    "HasDiscount": true,
+    "FinalPrice": 476000.00,
+    "Specific": "ferfefwe",
+    "Discount": 15
+  }
+]

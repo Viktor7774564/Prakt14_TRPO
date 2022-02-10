@@ -1,0 +1,11 @@
+﻿<Application x:Class="TRPO14_D.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TRPO14_D" 
+             xmlns:Converters="clr-namespace:TRPO14_D.Converters"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Converters:DiscountToVisibilityConverter x:Key="VisibilityConverter"/>
+        <Converters:DiscountToStrikelineConverter x:Key="StrikelineConverter"/>
+    </Application.Resources>
+</Application>
